@@ -1,0 +1,139 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@android:color/white"
+    android:elevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flight_card"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:elevation="5dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAD"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAD"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/plane"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NY JFK"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem Ipsum Airlines"
+            android:textStyle="bold"
+            android:paddingTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$190"
+            android:textStyle="bold"
+            android:textColor="#eb9701"
+            android:paddingTop="5dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvAirline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Airline Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tvFlightDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flight Number | Duration"
+        android:textSize="14sp"
+        android:textColor="#666666"/>
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="$250"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#eb9701"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbEconomy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Economy"/>
+
+        <RadioButton
+            android:id="@+id/rbBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Business"/>
+
+        <RadioButton
+            android:id="@+id/rbFirstClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Class"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Flight"
+        android:background="#eb9701"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:visibility="gone"/> <!-- Hidden by default -->
+</LinearLayout>
