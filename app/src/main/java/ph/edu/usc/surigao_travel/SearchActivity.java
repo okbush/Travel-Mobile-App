@@ -53,21 +53,16 @@ public class SearchActivity extends AppCompatActivity {
         String departureDate = txtDepartureDate.getText().toString().trim();
         String returnDate = txtReturnDate.getText().toString().trim();
 
-        // Validate input
-        if (from.isEmpty() || to.isEmpty()) {
-            Toast.makeText(this, "Please enter both FROM and TO destinations", Toast.LENGTH_SHORT).show();
+        if (from.isEmpty() || to.isEmpty() || departureDate.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Sample flight data based on the input
-        // In a real application, you would fetch this data from a server or database
-        flightList.add(new Flight("Airline A", "AA123", "08:00 AM", "12:00 PM", "4h", "Economy", "250"));
-        flightList.add(new Flight("Airline B", "BB456", "10:00 AM", "02:00 PM", "4h", "Business", "450"));
-        flightList.add(new Flight("Airline C", "CC789", "01:00 PM", "05:00 PM", "4h", "First Class", "800"));
-        flightList.add(new Flight("Airline D", "DD101", "03:00 PM", "07:00 PM", "4h", "Economy", "300"));
-        flightList.add(new Flight("Airline E", "EE202", "05:00 PM", "09:00 PM", "4h", "Business", "500"));
+        // Generate search results based on user input
+        flightList.add(new Flight("Airline A", "AA123", "08:00 AM", "12:00 PM", "4h", from, to, departureDate, returnDate, "Economy", "250"));
+        flightList.add(new Flight("Airline B", "BB456", "10:00 AM", "02:00 PM", "4h", from, to, departureDate, returnDate, "Business", "450"));
+        flightList.add(new Flight("Airline C", "CC789", "01:00 PM", "05:00 PM", "4h", from, to, departureDate, returnDate, "First Class", "800"));
 
-        // Notify the adapter that the data has changed
         adapter.notifyDataSetChanged();
     }
 }

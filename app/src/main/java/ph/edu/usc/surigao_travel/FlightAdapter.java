@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -24,25 +23,23 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
 
         Flight flight = getItem(position);
 
-        TextView etFrom = convertView.findViewById(R.id.etFrom);
-        TextView etTo = convertView.findViewById(R.id.etTo);
-        TextView txtDepartureDate = convertView.findViewById(R.id.txtDepartureDate);
-        TextView txtReturnDate = convertView.findViewById(R.id.txtReturnDate);
+        TextView tvFrom = convertView.findViewById(R.id.tvFrom);
+        TextView tvTo = convertView.findViewById(R.id.tvTo);
+        TextView tvDepartureDate = convertView.findViewById(R.id.tvDepartureDate);
+        TextView tvReturnDate = convertView.findViewById(R.id.tvReturnDate);
         TextView tvAirline = convertView.findViewById(R.id.tvAirline);
-        TextView tvPrice = convertView.findViewById(R.id.tvPrice); // You may need to add this ID in your layout
+        TextView tvSeatClass = convertView.findViewById(R.id.tvSeatClass);
+        TextView tvPrice = convertView.findViewById(R.id.tvPrice);
         RadioButton radioButton = convertView.findViewById(R.id.radioButton);
 
-        // Set the values for the TextViews
-        etFrom.setText(flight.getAirline()); // Assuming airline is the departure location
-        etTo.setText("Destination"); // You may want to set this based on your Flight object
-        txtDepartureDate.setText(flight.getDepartureTime()); // Assuming this is the departure time
-        txtReturnDate.setText(flight.getArrivalTime()); // Assuming this is the arrival time
-        tvPrice.setText("$" + flight.getPrice()); // Assuming you want to show the price
-
-        // Set the visibility of the radio button based on your logic
-        radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Handle the radio button check change
-        });
+        // Display user input in the flight item
+        tvFrom.setText(flight.getFrom());
+        tvTo.setText(flight.getTo());
+        tvDepartureDate.setText("Departure: " + flight.getDepartureDate());
+        tvReturnDate.setText("Return: " + (flight.getReturnDate().isEmpty() ? "N/A" : flight.getReturnDate()));
+        tvAirline.setText(flight.getAirline());
+        tvSeatClass.setText("Class: " + flight.getSeatClass());
+        tvPrice.setText("$" + flight.getPrice());
 
         return convertView;
     }
