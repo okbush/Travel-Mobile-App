@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btnFlights, btnBus, btnTrain, btnHotels;
+    private ImageButton btnFlights, btnBus, btnTrain, btnHotels, btnTrips, btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         btnBus = findViewById(R.id.btnBus);
         btnTrain = findViewById(R.id.btnTrain);
         btnHotels = findViewById(R.id.btnHotels);
+        btnTrips = findViewById(R.id.btnTrips);
+        btnSettings = findViewById(R.id.btnSettings);
 
         View.OnClickListener goToSearch = new View.OnClickListener() {
             @Override
@@ -33,5 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnBus.setOnClickListener(goToSearch);
         btnTrain.setOnClickListener(goToSearch);
         btnHotels.setOnClickListener(goToSearch);
+        btnTrips.setOnClickListener(goToSearch);
+        btnSettings.setOnClickListener(goToSearch);
     }
 }
