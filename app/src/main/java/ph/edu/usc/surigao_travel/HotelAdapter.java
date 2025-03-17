@@ -13,10 +13,10 @@ import android.widget.TextView;
 import java.util.List;
 
 public class HotelAdapter extends ArrayAdapter<Hotel> {
-    private int selectedPosition = -1;
+    private int selectedPosition = -1; // Tracks which radio button is selected
 
-    public HotelAdapter(Context context, List<Flight> flights) {
-        super(context, 0, flights);
+    public HotelAdapter(Context context, List<Hotel> hotels) {
+        super(context, 0, hotels);
     }
 
     @Override
@@ -27,41 +27,41 @@ public class HotelAdapter extends ArrayAdapter<Hotel> {
 
         Hotel hotel = getItem(position);
 
-        // Bind UI elements
-        TextView etFrom = convertView.findViewById(R.id.etFrom);
-        TextView etTo = convertView.findViewById(R.id.etTo);
-        TextView txtDepartureDate = convertView.findViewById(R.id.txtDepartureDate);
-        TextView txtReturnDate = convertView.findViewById(R.id.txtReturnDate);
-        TextView tvAirline = convertView.findViewById(R.id.tvAirline);
+        // Bind UI elements with correct IDs
+        TextView tvFrom = convertView.findViewById(R.id.tvFrom);
+        TextView tvGuests = convertView.findViewById(R.id.tvGuests);
+        TextView tvCheckIn = convertView.findViewById(R.id.tvCheckIn);
+        TextView tvCheckOut = convertView.findViewById(R.id.tvCheckOut);
+        TextView tvName = convertView.findViewById(R.id.tvName);
         TextView tvPrice = convertView.findViewById(R.id.tvPrice);
         RadioButton radioButton = convertView.findViewById(R.id.radioButton);
-        Button btnBook = convertView.findViewById(R.id.btnBook); // The Book button
+        Button btnBook = convertView.findViewById(R.id.btnBook);
 
         // Set values
-        etFrom.setText(hotel.getFrom());
-        etTo.setText(hotel.getTo());
-        txtDepartureDate.setText(hotel.getDepartureTime());
-        txtReturnDate.setText(hotel.getReturnTime());
-        tvAirline.setText(hotel.getAirline());
+        tvFrom.setText(hotel.getFrom());
+        tvGuests.setText(hotel.getGuests());
+        tvCheckIn.setText(hotel.getCheckin());
+        tvCheckOut.setText(hotel.getCheckout());
+        tvName.setText(hotel.getName());
         tvPrice.setText(hotel.getPrice());
 
-        // Show Book button only if this flight is selected
+        // Show Book button only if this hotel is selected
         btnBook.setVisibility(position == selectedPosition ? View.VISIBLE : View.GONE);
 
-        // Handle radio button click
+        // Handle radio button selection
+        radioButton.setChecked(position == selectedPosition);
         radioButton.setOnClickListener(v -> {
             selectedPosition = position;
-            notifyDataSetChanged(); // Refresh the list to show the Book button
+            notifyDataSetChanged(); // Refresh the list
         });
 
-        // Handle Book button click (Navigate to FlightDetailsActivity)
         btnBook.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), FlightDetailsActivity.class);
-            intent.putExtra("airline", hotel.getAirline());
+            intent.putExtra("name", hotel.getName());
             intent.putExtra("from", hotel.getFrom());
-            intent.putExtra("to", hotel.getTo());
-            intent.putExtra("departure", hotel.getDepartureTime());
-            intent.putExtra("return", hotel.getReturnTime());
+            intent.putExtra("guests", hotel.getGuests());
+            intent.putExtra("checkin", hotel.getCheckin());
+            intent.putExtra("checkout", hotel.getCheckout());
             intent.putExtra("price", hotel.getPrice());
             getContext().startActivity(intent);
         });

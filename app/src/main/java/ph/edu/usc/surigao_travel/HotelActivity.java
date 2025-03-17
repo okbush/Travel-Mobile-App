@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,14 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import ph.edu.usc.surigao_travel.HotelAdapter;
-
-public class HotelActivty extends AppCompatActivity {
-    private EditText etCity, etGuests, etCheckIn, etCheckOut;
+public class HotelActivity extends AppCompatActivity {
+    private EditText etFrom, etGuests, etCheckIn, etCheckOut;
     private ListView listView;
     ImageButton btnBack;
     private HotelAdapter hotelAdapter;
     private List<Hotel> hotelList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +29,22 @@ public class HotelActivty extends AppCompatActivity {
 
         btnBack = findViewById(R.id.btnBack);
 
-        View.OnClickListener goBack = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent( HotelActivty.this, MainActivity.class));
-            }
-        };
+//        View.OnClickListener goBack = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent( HotelActivity.this, MainActivity.class));
+//            }
+//        };
+//        btnBack.setOnClickListener(goBack);
 
-        btnBack.setOnClickListener(goBack);
+        btnBack.setOnClickListener(v -> {
+            startActivity(new Intent(HotelActivity.this, MainActivity.class));
+            finish();
+        });
+
 
         // Initialize UI elements
-        etCity = findViewById(R.id.etCity);
+        etFrom = findViewById(R.id.etFrom);
         etGuests = findViewById(R.id.etGuests);
         etCheckIn = findViewById(R.id.etCheckIn);
         etCheckOut = findViewById(R.id.etCheckOut);
@@ -48,7 +53,9 @@ public class HotelActivty extends AppCompatActivity {
 
         hotelList = new ArrayList<>();
         hotelAdapter = new HotelAdapter(this, hotelList);
-        listView.setAdapter(HotelAdapter);
+        listView.setAdapter(hotelAdapter);
+
+
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,20 +67,24 @@ public class HotelActivty extends AppCompatActivity {
 
     private void searchHotels() {
         // Get user input
-        String from = etCity.getText().toString();
-        String to = etGuests.getText().toString();
-        String departure = etCheckIn.getText().toString();
-        String returnDate = etCheckOut.getText().toString();
+        String from = etFrom.getText().toString().trim();
+        String guests = etGuests.getText().toString().trim();
+        String checkin = etCheckIn.getText().toString().trim();
+        String checkout = etCheckOut.getText().toString().trim();
 
         // Clear previous results
         hotelList.clear();
 
-        // Sample data for demonstration (different airlines, same user input)
-        hotelList.add(new Flight("Airline A", from, to, departure, returnDate, "$250"));
-        hotelList.add(new Flight("Airline B", from, to, departure, returnDate, "$220"));
-        hotelList.add(new Flight("Airline C", from, to, departure, returnDate, "$275"));
+        // Add new results (You can replace this with real search logic)
+        if (!from.isEmpty() && !guests.isEmpty() && !checkin.isEmpty() && !checkout.isEmpty()) {
+            hotelList.add(new Hotel("Hotel A", from, guests, checkin, checkout, "$250"));
+            hotelList.add(new Hotel("Hotel B", from, guests, checkin, checkout, "$220"));
+            hotelList.add(new Hotel("Hotel C", from, guests, checkin, checkout, "$275"));
+        } else {
+            // Show an empty list if the search is invalid
+        }
 
-        // Notify adapter about data changes
+        // Notify the adapter of data changes
         hotelAdapter.notifyDataSetChanged();
     }
 }
