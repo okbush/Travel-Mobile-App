@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">surigao_travel</string>
+
+    <string-array name="seat_options">
+        <item>Window</item>
+        <item>Aisle</item>
+        <item>Middle</item>
+    </string-array>
+
+    <string-array name="baggage_options">
+        <item>None</item>
+        <item>10kg</item>
+        <item>20kg</item>
+        <item>30kg</item>
+    </string-array>
+
+    <string-array name="meal_options">
+        <item>Vegetarian</item>
+        <item>Non-Vegetarian</item>
+        <item>Vegan</item>
+    </string-array>
+
 </resources>

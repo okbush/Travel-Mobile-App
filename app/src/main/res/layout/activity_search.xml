@@ -5,10 +5,9 @@
     android:orientation="vertical"
     android:padding="0dp">
 
-    <!-- Header with Orange Background -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="340dp"
         android:background="#eb9701"
         android:orientation="vertical"
         android:padding="20dp">
@@ -17,23 +16,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:paddingTop="20dp">
 
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@null"
-                android:src="@drawable/back_button"
-                android:scaleType="fitCenter" /> <!-- Add content description -->
+                android:scaleType="fitCenter"
+                android:src="@drawable/back_button" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SEARCH FLIGHT"
-                android:textColor="@color/white"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -49,18 +49,18 @@
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:text="FROM"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:text="TO"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Flight Search Inputs -->
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="5dp">
 
             <EditText
                 android:id="@+id/etFrom"
@@ -76,9 +76,9 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
+                android:gravity="center"
                 android:hint="Madrid"
                 android:inputType="text"
-                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -86,14 +86,14 @@
                 android:id="@+id/etTo"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
+                android:gravity="center"
                 android:hint="New York"
                 android:inputType="text"
-                android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_marginStart="10dp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,18 +107,18 @@
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:text="DEPARTURE"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:text="RETURN"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Date Selection -->
@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="5dp">
 
             <EditText
                 android:id="@+id/etDeparture"
@@ -135,45 +135,44 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
                 android:gravity="center"
-                android:inputType="date"
                 android:hint="13.07.20"
+                android:inputType="date"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
+
 
             <EditText
                 android:id="@+id/etReturn"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
                 android:gravity="center"
-                android:inputType="date"
                 android:hint="23.07.20"
+                android:inputType="date"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
+
         </LinearLayout>
 
         <Button
             android:id="@+id/btnSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Search"
-            android:background="#eb9701"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp" />
+            android:textStyle="bold" />
+
     </LinearLayout>
 
-    <!-- Flight Search Results Container -->
-
-
-        <ListView
+    <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    <!-- Book Flight Button -->
     <Button
         android:id="@+id/btnBookFlight"
         android:layout_width="match_parent"

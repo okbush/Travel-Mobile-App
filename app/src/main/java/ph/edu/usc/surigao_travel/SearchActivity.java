@@ -1,9 +1,11 @@
 package ph.edu.usc.surigao_travel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
     private EditText etFrom, etTo, etDeparture, etReturn;
     private ListView listView;
+    ImageButton btnBack;
     private FlightAdapter flightAdapter;
     private List<Flight> flightList;
 
@@ -21,6 +24,17 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        btnBack = findViewById(R.id.btnBack);
+
+        View.OnClickListener goBack = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchActivity.this, MainActivity.class));
+            }
+        };
+
+        btnBack.setOnClickListener(goBack);
 
         // Initialize UI elements
         etFrom = findViewById(R.id.etFrom);

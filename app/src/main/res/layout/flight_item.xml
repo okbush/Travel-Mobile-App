@@ -87,4 +87,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Book This Flight"/>
+
+    <Button
+        android:id="@+id/btnBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book"
+        android:visibility="gone"
+        android:background="#800080"
+        android:textColor="@android:color/white"
+        android:padding="10dp"/>
+
 </LinearLayout>
