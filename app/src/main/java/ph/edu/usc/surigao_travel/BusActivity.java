@@ -65,9 +65,9 @@ public class BusActivity extends AppCompatActivity {
 
         // Add new results (You can replace this with real search logic)
         if (!departure.isEmpty() && !arrival.isEmpty() && !travel.isEmpty()) {
-            busList.add(new Bus("Hotel A", departure, arrival, travel, "$250"));
-            busList.add(new Bus("Hotel B", departure, arrival, travel, "$220"));
-            busList.add(new Bus("Hotel C", departure, arrival, travel, "$275"));
+            busList.add(new Bus("Bus A", departure, arrival, travel, "$20"));
+            busList.add(new Bus("Bus B", departure, arrival, travel, "$25"));
+            busList.add(new Bus("Bus C", departure, arrival, travel, "$30"));
         } else {
             // Show an empty list if the search is invalid
         }

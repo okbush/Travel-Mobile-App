@@ -25,7 +25,7 @@
                 android:src="@drawable/circle"/>
 
             <TextView
-                android:id="@+id/tvDestination"
+                android:id="@+id/tvDeparture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Destination City"

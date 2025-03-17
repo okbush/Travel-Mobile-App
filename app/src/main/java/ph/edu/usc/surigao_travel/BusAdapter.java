@@ -15,8 +15,8 @@ import java.util.List;
 public class BusAdapter extends ArrayAdapter<Bus> {
     private int selectedPosition = -1; // Tracks which radio button is selected
 
-    public BusAdapter(Context context, List<Bus> bus) {
-        super(context, 0, bus);
+    public BusAdapter(Context context, List<Bus> busList) {
+        super(context, 0, busList);
     }
 
     @Override
@@ -26,33 +26,35 @@ public class BusAdapter extends ArrayAdapter<Bus> {
         }
 
         Bus bus = getItem(position);
+        if (bus == null) return convertView;
 
         // Bind UI elements
-        TextView etDeparture = convertView.findViewById(R.id.etDeparture);
-        TextView etArrival = convertView.findViewById(R.id.etArrival);
-        TextView etTravel = convertView.findViewById(R.id.etTravel);
+        TextView tvDeparture = convertView.findViewById(R.id.tvDeparture);
+        TextView tvArrival = convertView.findViewById(R.id.tvArrival);
+        TextView tvTravel = convertView.findViewById(R.id.tvTravel);
         TextView tvName = convertView.findViewById(R.id.tvName);
         TextView tvPrice = convertView.findViewById(R.id.tvPrice);
         RadioButton radioButton = convertView.findViewById(R.id.radioButton);
-        Button btnBook = convertView.findViewById(R.id.btnBook); // The Book button
+        Button btnBook = convertView.findViewById(R.id.btnBook);
 
         // Set values
-        etDeparture.setText(bus.getDeparture());
-        etArrival.setText(bus.getArrival());
-        etTravel.setText(bus.getTravel());
+        tvDeparture.setText(bus.getDeparture());
+        tvArrival.setText(bus.getArrival());
+        tvTravel.setText(bus.getTravel());
         tvName.setText(bus.getName());
         tvPrice.setText(bus.getPrice());
 
-        // Show Book button only if this flight is selected
+        // Show Book button only for selected item
         btnBook.setVisibility(position == selectedPosition ? View.VISIBLE : View.GONE);
+        radioButton.setChecked(position == selectedPosition);
 
         // Handle radio button click
         radioButton.setOnClickListener(v -> {
             selectedPosition = position;
-            notifyDataSetChanged(); // Refresh the list to show the Book button
+            notifyDataSetChanged(); // Refresh the list
         });
 
-        // Handle Book button click (Navigate to FlightDetailsActivity)
+        // Handle Book button click
         btnBook.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), BusDetailsActivity.class);
             intent.putExtra("name", bus.getName());
