@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private Button btnSearch;
+    private Button btnSearch, btnBookFlight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,14 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         btnSearch = findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(v -> startActivity(new Intent(SearchActivity.this, ResultsActivity.class)));
+        btnBookFlight = findViewById(R.id.btnBookFlight);
+
+        btnSearch.setOnClickListener(v ->
+                startActivity(new Intent(SearchActivity.this, ResultsActivity.class))
+        );
+
+        btnBookFlight.setOnClickListener(v ->
+                startActivity(new Intent(SearchActivity.this, BookingActivity.class))
+        );
     }
 }
