@@ -23,23 +23,22 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
 
         Flight flight = getItem(position);
 
-        TextView tvFrom = convertView.findViewById(R.id.tvFrom);
-        TextView tvTo = convertView.findViewById(R.id.tvTo);
-        TextView tvDepartureDate = convertView.findViewById(R.id.tvDepartureDate);
-        TextView tvReturnDate = convertView.findViewById(R.id.tvReturnDate);
+        // Bind UI elements
+        TextView etFrom = convertView.findViewById(R.id.etFrom);
+        TextView etTo = convertView.findViewById(R.id.etTo);
+        TextView txtDepartureDate = convertView.findViewById(R.id.txtDepartureDate);
+        TextView txtReturnDate = convertView.findViewById(R.id.txtReturnDate);
         TextView tvAirline = convertView.findViewById(R.id.tvAirline);
-        TextView tvSeatClass = convertView.findViewById(R.id.tvSeatClass);
         TextView tvPrice = convertView.findViewById(R.id.tvPrice);
         RadioButton radioButton = convertView.findViewById(R.id.radioButton);
 
-        // Display user input in the flight item
-        tvFrom.setText(flight.getFrom());
-        tvTo.setText(flight.getTo());
-        tvDepartureDate.setText("Departure: " + flight.getDepartureDate());
-        tvReturnDate.setText("Return: " + (flight.getReturnDate().isEmpty() ? "N/A" : flight.getReturnDate()));
+        // Set values from the Flight object
+        etFrom.setText(flight.getFrom());
+        etTo.setText(flight.getTo());
+        txtDepartureDate.setText(flight.getDepartureTime());
+        txtReturnDate.setText(flight.getReturnTime());
         tvAirline.setText(flight.getAirline());
-        tvSeatClass.setText("Class: " + flight.getSeatClass());
-        tvPrice.setText("$" + flight.getPrice());
+        tvPrice.setText(flight.getPrice());
 
         return convertView;
     }
