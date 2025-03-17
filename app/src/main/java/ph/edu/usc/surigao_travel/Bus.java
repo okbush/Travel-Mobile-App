@@ -2,25 +2,22 @@ package ph.edu.usc.surigao_travel;
 
 public class Bus {
     private String name;
-    private String from;
-    private String guests;
-    private String checkin;
-    private String checkout;
+    private String departure;
+    private String arrival;
+    private String travel;
     private String price;
 
-    public Hotel(String name, String from, String guests, String checkin, String checkout, String price) {
+    public Bus(String name, String departure, String arrival, String travel, String price) {
         this.name = name;
-        this.from = from;
-        this.guests = guests;
-        this.checkin = checkin;
-        this.checkout = checkout;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.travel = travel;
         this.price = price;
     }
 
     public String getName() { return name; }
-    public String getFrom() { return from; }
-    public String getGuests() { return guests; }
-    public String getCheckin() { return checkin; }
-    public String getCheckout() { return checkout; }
+    public String getDeparture() { return departure; }
+    public String getArrival() { return arrival; }
+    public String getTravel() { return travel; }
     public String getPrice() { return price; }
 }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Surigao_travel"
         tools:targetApi="31">
         <activity
+            android:name=".BusDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".BusActivity"
             android:exported="false" />
         <activity
