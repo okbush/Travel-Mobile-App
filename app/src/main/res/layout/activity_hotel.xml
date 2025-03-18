@@ -77,7 +77,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
                 android:gravity="center"
-                android:hint="New York"
+                android:hint="Enter City"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -135,7 +135,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
                 android:gravity="center"
-                android:hint="13.07.20"
+                android:hint="MM / DD / YY"
                 android:inputType="date"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -149,7 +149,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_input"
                 android:gravity="center"
-                android:hint="23.07.20"
+                android:hint="MM / DD / YY"
                 android:inputType="date"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
