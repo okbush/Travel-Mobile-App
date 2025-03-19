@@ -36,7 +36,6 @@ public class SearchActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(goBack);
 
-        // Initialize UI elements
         etFrom = findViewById(R.id.etFrom);
         etTo = findViewById(R.id.etTo);
         etDeparture = findViewById(R.id.etDeparture);
@@ -48,7 +47,6 @@ public class SearchActivity extends AppCompatActivity {
         flightAdapter = new FlightAdapter(this, flightList);
         listView.setAdapter(flightAdapter);
 
-        // Search Button Click Listener
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,21 +56,18 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void searchFlights() {
-        // Get user input
+
         String from = etFrom.getText().toString();
         String to = etTo.getText().toString();
         String departure = etDeparture.getText().toString();
         String returnDate = etReturn.getText().toString();
 
-        // Clear previous results
         flightList.clear();
 
-        // Sample data for demonstration (different airlines, same user input)
         flightList.add(new Flight("Airline A", from, to, departure, returnDate, "$250"));
         flightList.add(new Flight("Airline B", from, to, departure, returnDate, "$220"));
         flightList.add(new Flight("Airline C", from, to, departure, returnDate, "$275"));
 
-        // Notify adapter about data changes
         flightAdapter.notifyDataSetChanged();
     }
 }

@@ -12,13 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
         <ImageView
             android:id="@+id/imageHamburger"
             android:layout_width="20dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            tools:srcCompat="@drawable/hamburger" />
+            android:src="@drawable/hamburger"/>
 
         <TextView
             android:layout_width="170dp"
@@ -36,7 +35,8 @@
             android:layout_weight="1"
             android:background="@drawable/circle_avatar"
             android:clipToOutline="true"
-            tools:srcCompat="@drawable/temp_pfp" />
+            android:src="@drawable/temp_pfp" />
+
     </LinearLayout>
 
     <TextView
@@ -45,19 +45,19 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:text="GET READY FOR YOUR HOLIDAYS!"
-        android:textStyle="bold"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@drawable/round_searchbar"
         android:hint="⌕ Search"
         android:padding="10dp"
+        android:scaleType="centerCrop"
         android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:background="@drawable/round_searchbar"
-        android:scaleType="centerCrop"/>
+        android:textColorHint="#FFFFFF" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,8 +87,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button"
-                        android:scaleType="centerCrop"
                         android:clipToOutline="true"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/flight" />
 
                     <TextView
@@ -96,12 +96,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|left"
                         android:layout_margin="8dp"
+                        android:background="@drawable/text_bg"
                         android:text="FLIGHTS"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/text_bg"/>
-
+                        android:textStyle="bold" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -121,8 +120,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button"
-                        android:scaleType="centerCrop"
                         android:clipToOutline="true"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/bus" />
 
                     <TextView
@@ -130,11 +129,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|left"
                         android:layout_margin="8dp"
+                        android:background="@drawable/text_bg"
                         android:text="BUS"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/text_bg"/>
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -162,8 +161,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button"
-                        android:scaleType="centerCrop"
                         android:clipToOutline="true"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/train" />
 
                     <TextView
@@ -171,11 +170,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|left"
                         android:layout_margin="8dp"
+                        android:background="@drawable/text_bg"
                         android:text="TRAIN"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/text_bg"/>
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -196,8 +195,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button"
-                        android:scaleType="centerCrop"
                         android:clipToOutline="true"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/hotel" />
 
                     <TextView
@@ -205,14 +204,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|left"
                         android:layout_margin="8dp"
+                        android:background="@drawable/text_bg"
                         android:text="HOTEL"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/text_bg"/>
+                        android:textStyle="bold" />
 
                 </FrameLayout>
-
 
             </LinearLayout>
         </LinearLayout>
@@ -247,11 +245,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|left"
                         android:layout_margin="8dp"
+                        android:background="@drawable/text_bg"
                         android:text="MY TRIPS"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/text_bg"/>
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -272,8 +270,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button"
-                        android:scaleType="centerCrop"
                         android:clipToOutline="true"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/settings" />
 
                     <TextView
@@ -281,11 +279,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|left"
                         android:layout_margin="8dp"
+                        android:background="@drawable/text_bg"
                         android:text="SETTINGS"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/text_bg"/>
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 

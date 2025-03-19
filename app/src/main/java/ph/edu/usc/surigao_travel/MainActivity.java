@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        View.OnClickListener goToTrain = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TrainActivity.class));
+            }
+        };
+
         View.OnClickListener goToHotel = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnFlights.setOnClickListener(goToSearch);
         btnBus.setOnClickListener(goToBus);
-        btnTrain.setOnClickListener(goToSearch);
+        btnTrain.setOnClickListener(goToTrain);
         btnHotels.setOnClickListener(goToHotel);
         btnTrips.setOnClickListener(goToSearch);
         btnSettings.setOnClickListener(goToSettings);
