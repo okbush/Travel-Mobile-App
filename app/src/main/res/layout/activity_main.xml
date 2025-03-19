@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +8,7 @@
     android:orientation="vertical"
     android:padding="40dp">
 
+    <!-- Top Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +19,7 @@
             android:layout_width="20dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:src="@drawable/hamburger"/>
+            android:src="@drawable/hamburger" />
 
         <TextView
             android:layout_width="170dp"
@@ -36,9 +38,9 @@
             android:background="@drawable/circle_avatar"
             android:clipToOutline="true"
             android:src="@drawable/temp_pfp" />
-
     </LinearLayout>
 
+    <!-- Subtitle -->
     <TextView
         android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
@@ -48,6 +50,7 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
+    <!-- Search Bar -->
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
@@ -59,6 +62,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF" />
 
+    <!-- Buttons Layout (No Design Change, Just Adding Visibility Control) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,225 +73,95 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:padding="5dp">
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnFlights"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:background="@drawable/rounded_button"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/flight"
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_button">
-
-                    <ImageButton
-                        android:id="@+id/btnFlights"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/rounded_button"
-                        android:clipToOutline="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/flight" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|left"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/text_bg"
-                        android:text="FLIGHTS"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnBus"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageButton
-                        android:id="@+id/btnBus"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/rounded_button"
-                        android:clipToOutline="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/bus" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|left"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/text_bg"
-                        android:text="BUS"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-            </LinearLayout>
+                android:background="@drawable/rounded_button"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus"
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:padding="5dp">
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnTrain"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:background="@drawable/rounded_button"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/train"
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageButton
-                        android:id="@+id/btnTrain"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/rounded_button"
-                        android:clipToOutline="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/train" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|left"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/text_bg"
-                        android:text="TRAIN"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnHotels"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageButton
-                        android:id="@+id/btnHotels"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/rounded_button"
-                        android:clipToOutline="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/hotel" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|left"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/text_bg"
-                        android:text="HOTEL"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-            </LinearLayout>
+                android:background="@drawable/rounded_button"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hotel"
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:padding="5dp">
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnTrips"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:background="@drawable/rounded_button"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/trips"
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageButton
-                        android:id="@+id/btnTrips"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/rounded_button"
-                        android:clipToOutline="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/trips" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|left"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/text_bg"
-                        android:text="MY TRIPS"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnSettings"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageButton
-                        android:id="@+id/btnSettings"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/rounded_button"
-                        android:clipToOutline="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/settings" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|left"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/text_bg"
-                        android:text="SETTINGS"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </FrameLayout>
-
-            </LinearLayout>
+                android:background="@drawable/rounded_button"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/settings"
+                android:visibility="visible"
+                android:layout_margin="5dp"/>
         </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

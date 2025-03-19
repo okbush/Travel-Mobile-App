@@ -28,8 +28,8 @@ public class TripsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trips);
 
-        recyclerView = findViewById(R.id.recyclerViewTrips); // ✅ Ensure ID matches XML
-        btnBackToMain = findViewById(R.id.btnBackToMain);
+        btnBackToMain = findViewById(R.id.btnBackToMain); // ✅ Ensure this is initialized
+        recyclerView = findViewById(R.id.recyclerViewTrips);
         bookingList = new ArrayList<>();
         sharedPreferences = getSharedPreferences("Bookings", Context.MODE_PRIVATE);
 
@@ -72,9 +72,15 @@ public class TripsActivity extends AppCompatActivity {
                 bookingList.add(booking);
             }
         }
+
+        if (tripAdapter != null) {
+            tripAdapter.notifyDataSetChanged();
+        }
     }
 
     private void addBooking(Intent intent) {
+        if (tripAdapter == null) return; // ✅ Prevent crashes
+
         BusBooking booking = new BusBooking(
                 intent.getStringExtra("passengerName"),
                 intent.getStringExtra("name"),
@@ -86,7 +92,10 @@ public class TripsActivity extends AppCompatActivity {
 
         bookingList.add(booking);
         saveBookings();
-        tripAdapter.notifyDataSetChanged();
+
+        if (tripAdapter != null) {
+            tripAdapter.notifyDataSetChanged();
+        }
     }
 
     private void modifyBooking(int position) {
@@ -99,7 +108,6 @@ public class TripsActivity extends AppCompatActivity {
         modifyIntent.putExtra("travel", booking.getTravelDate());
         modifyIntent.putExtra("price", booking.getPrice());
 
-        // Remove old booking before modifying
         bookingList.remove(position);
         saveBookings();
         tripAdapter.notifyDataSetChanged();

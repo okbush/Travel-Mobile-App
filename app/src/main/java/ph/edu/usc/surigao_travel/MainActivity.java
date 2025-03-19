@@ -2,15 +2,17 @@ package ph.edu.usc.surigao_travel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText etSearch;
     private ImageButton btnFlights, btnBus, btnTrain, btnHotels, btnTrips, btnSettings;
 
     @Override
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        etSearch = findViewById(R.id.etSearch);
         btnFlights = findViewById(R.id.btnFlights);
         btnBus = findViewById(R.id.btnBus);
         btnTrain = findViewById(R.id.btnTrain);
@@ -25,53 +28,35 @@ public class MainActivity extends AppCompatActivity {
         btnTrips = findViewById(R.id.btnTrips);
         btnSettings = findViewById(R.id.btnSettings);
 
-        View.OnClickListener goToSearch = new View.OnClickListener() {
+        etSearch.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SearchActivity.class));
-            }
-        };
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-        View.OnClickListener goToBus = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BusActivity.class));
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                filterButtons(charSequence.toString().trim());
             }
-        };
 
-        View.OnClickListener goToTrain = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TrainActivity.class));
-            }
-        };
+            public void afterTextChanged(Editable editable) {}
+        });
 
-        View.OnClickListener goToHotel = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, HotelActivity.class));
-            }
-        };
+        btnFlights.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SearchActivity.class)));
+        btnBus.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, BusActivity.class)));
+        btnTrain.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TrainActivity.class)));
+        btnHotels.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, HotelActivity.class)));
+        btnTrips.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TripsActivity.class)));
+        btnSettings.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
+    }
 
-        View.OnClickListener goToTrips = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TripsActivity.class));
-            }
-        };
+    private void filterButtons(String query) {
+        int visibility = query.isEmpty() ? View.VISIBLE : View.GONE;
 
-        View.OnClickListener goToSettings = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            }
-        };
-
-        btnFlights.setOnClickListener(goToSearch);
-        btnBus.setOnClickListener(goToBus);
-        btnTrain.setOnClickListener(goToTrain);
-        btnHotels.setOnClickListener(goToHotel);
-        btnTrips.setOnClickListener(goToTrips);
-        btnSettings.setOnClickListener(goToSettings);
+        btnFlights.setVisibility(query.contains("flights") ? View.VISIBLE : visibility);
+        btnBus.setVisibility(query.contains("bus") ? View.VISIBLE : visibility);
+        btnTrain.setVisibility(query.contains("train") ? View.VISIBLE : visibility);
+        btnHotels.setVisibility(query.contains("hotel") ? View.VISIBLE : visibility);
+        btnTrips.setVisibility(query.contains("trips") ? View.VISIBLE : visibility);
+        btnSettings.setVisibility(query.contains("settings") ? View.VISIBLE : visibility);
     }
 }
