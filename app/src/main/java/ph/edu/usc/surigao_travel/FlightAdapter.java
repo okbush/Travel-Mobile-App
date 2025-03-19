@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class FlightAdapter extends ArrayAdapter<Flight> {
-    private int selectedPosition = -1; // Tracks which radio button is selected
+    private int selectedPosition = -1;
 
     public FlightAdapter(Context context, List<Flight> flights) {
         super(context, 0, flights);
@@ -27,7 +27,6 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
 
         Flight flight = getItem(position);
 
-        // Bind UI elements
         TextView etFrom = convertView.findViewById(R.id.etFrom);
         TextView etTo = convertView.findViewById(R.id.etTo);
         TextView txtDepartureDate = convertView.findViewById(R.id.txtDepartureDate);
@@ -37,7 +36,6 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
         RadioButton radioButton = convertView.findViewById(R.id.radioButton);
         Button btnBook = convertView.findViewById(R.id.btnBook); // The Book button
 
-        // Set values
         etFrom.setText(flight.getFrom());
         etTo.setText(flight.getTo());
         txtDepartureDate.setText(flight.getDepartureTime());
@@ -45,16 +43,13 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
         tvAirline.setText(flight.getAirline());
         tvPrice.setText(flight.getPrice());
 
-        // Show Book button only if this flight is selected
         btnBook.setVisibility(position == selectedPosition ? View.VISIBLE : View.GONE);
 
-        // Handle radio button click
         radioButton.setOnClickListener(v -> {
             selectedPosition = position;
-            notifyDataSetChanged(); // Refresh the list to show the Book button
+            notifyDataSetChanged();
         });
 
-        // Handle Book button click (Navigate to FlightDetailsActivity)
         btnBook.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), FlightDetailsActivity.class);
             intent.putExtra("airline", flight.getAirline());
