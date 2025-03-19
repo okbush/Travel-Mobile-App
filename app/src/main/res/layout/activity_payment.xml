@@ -1,62 +1,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/half_background"
+    android:background="@drawable/other_half_background"
     android:orientation="vertical"
     android:padding="20dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp">
 
-        <Button
-            android:id="@+id/btnBackHome"
-            android:layout_width="54dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="b" />
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_button" />
 
         <TextView
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PAYMENT"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/etPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="Total Amount: $199"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etCardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:hint="Card Number" />
+
+        <EditText
+            android:id="@+id/etExpiryDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:hint="Expiry Date (MM/YY)" />
+
+        <EditText
+            android:id="@+id/etCVV"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:hint="CVV" />
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Confirm Payment" />
 
     </LinearLayout>
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Total Amount: $199"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/etCardNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Card Number" />
-
-    <EditText
-        android:id="@+id/etExpiryDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Expiry Date (MM/YY)" />
-
-    <EditText
-        android:id="@+id/etCVV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="CVV" />
-
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Confirm Payment" />
 </LinearLayout>
