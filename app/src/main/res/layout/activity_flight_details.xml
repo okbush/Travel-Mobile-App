@@ -129,8 +129,7 @@
 
     <!-- Enter name and it will show up at the bottom in both cards-->
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="match_parent"
+        android:id="@+id/etPassengerName"        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:inputType="text"

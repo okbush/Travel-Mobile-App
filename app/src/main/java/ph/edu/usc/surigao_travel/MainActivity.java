@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        View.OnClickListener goToTrips = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TripsActivity.class));
+            }
+        };
+
         View.OnClickListener goToSettings = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnBus.setOnClickListener(goToBus);
         btnTrain.setOnClickListener(goToTrain);
         btnHotels.setOnClickListener(goToHotel);
-        btnTrips.setOnClickListener(goToSearch);
+        btnTrips.setOnClickListener(goToTrips);
         btnSettings.setOnClickListener(goToSettings);
     }
 }

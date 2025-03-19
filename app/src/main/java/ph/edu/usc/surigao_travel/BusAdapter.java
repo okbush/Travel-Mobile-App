@@ -65,6 +65,7 @@ public class BusAdapter extends ArrayAdapter<Bus> {
             getContext().startActivity(intent);
         });
 
+
         return convertView;
     }
 }
