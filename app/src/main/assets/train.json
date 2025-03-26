@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Train A",
+    "departure": "City A",
+    "arrival": "City B",
+    "travel": "11/11/11",
+    "price": "$20"
+  },
+  {
+    "name": "Train B",
+    "departure": "City A",
+    "arrival": "City C",
+    "travel": "22/22/22",
+    "price": "$25"
+  },
+  {
+    "name": "Train C",
+    "departure": "City B",
+    "arrival": "City C",
+    "travel": "33/33/33",
+    "price": "$30"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Hotel A",
+    "destination": "City A",
+    "guest": "1",
+    "travel": "11/11/11",
+    "price": "$20"
+  },
+  {
+    "name": "Hotel B",
+    "destination": "City B",
+    "guest": "2",
+    "travel": "22/22/22",
+    "price": "$25"
+  },
+  {
+    "name": "Hotel C",
+    "destination": "City C",
+    "guest": "3",
+    "travel": "33/33/33",
+    "price": "$30"
+  }
+]
