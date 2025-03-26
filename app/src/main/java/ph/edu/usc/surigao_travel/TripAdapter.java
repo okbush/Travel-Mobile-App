@@ -1,7 +1,6 @@
 package ph.edu.usc.surigao_travel;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> {
     private Context context;
-    private List<BusBooking> tripList;
+    private List<TripItem> tripList;
     private TripClickListener listener;
 
     public interface TripClickListener {
@@ -23,7 +22,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         void onCancel(int position);
     }
 
-    public TripAdapter(Context context, List<BusBooking> tripList, TripClickListener listener) {
+    public TripAdapter(Context context, List<TripItem> tripList, TripClickListener listener) {
         this.context = context;
         this.tripList = tripList;
         this.listener = listener;
@@ -38,10 +37,10 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
-        BusBooking trip = tripList.get(position);
+        TripItem trip = tripList.get(position);
 
         holder.tvPassengerName.setText("Passenger: " + trip.getPassengerName());
-        holder.tvBusName.setText("Bus: " + trip.getBusName());
+        holder.tvBusOrAirline.setText("Bus Name: " + trip.getBusOrAirline()); // ✅ Fixed
         holder.tvDeparture.setText("From: " + trip.getDeparture());
         holder.tvArrival.setText("To: " + trip.getArrival());
         holder.tvTravelDate.setText("Date: " + trip.getTravelDate());
@@ -57,13 +56,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     }
 
     public static class TripViewHolder extends RecyclerView.ViewHolder {
-        TextView tvPassengerName, tvBusName, tvDeparture, tvArrival, tvTravelDate, tvPrice;
+        TextView tvPassengerName, tvBusOrAirline, tvDeparture, tvArrival, tvTravelDate, tvPrice;
         Button btnModify, btnCancel;
 
         public TripViewHolder(@NonNull View itemView) {
             super(itemView);
             tvPassengerName = itemView.findViewById(R.id.tvPassengerName);
-            tvBusName = itemView.findViewById(R.id.tvBusName);
             tvDeparture = itemView.findViewById(R.id.tvDeparture);
             tvArrival = itemView.findViewById(R.id.tvArrival);
             tvTravelDate = itemView.findViewById(R.id.tvTravelDate);

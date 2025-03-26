@@ -1,16 +1,24 @@
 package ph.edu.usc.surigao_travel;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +26,9 @@ public class SearchActivity extends AppCompatActivity {
     private EditText etFrom, etTo, etDeparture, etReturn;
     private ListView listView;
     private FlightAdapter flightAdapter;
-    private List<Flight> flightList;
+    private List<Flight> allFlights, filteredFlights;
     private ImageButton btnBack;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,43 +44,49 @@ public class SearchActivity extends AppCompatActivity {
         Button btnSearch = findViewById(R.id.btnSearch);
         listView = findViewById(R.id.listView);
 
-        // Set up back button
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SearchActivity.this, MainActivity.class));
-            }
+        // Back button event
+        btnBack.setOnClickListener(v -> {
+            startActivity(new Intent(SearchActivity.this, MainActivity.class));
+            finish();
         });
 
         // Initialize flight list and adapter
-        flightList = new ArrayList<>();
-        flightAdapter = new FlightAdapter(this, flightList);
+        allFlights = new ArrayList<>();
+        filteredFlights = new ArrayList<>();
+        flightAdapter = new FlightAdapter(this, filteredFlights);
         listView.setAdapter(flightAdapter);
 
-        // Search button click event
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchFlights();
-            }
-        });
+        sharedPreferences = getSharedPreferences("FlightSearch", Context.MODE_PRIVATE);
+        loadFlightData(); // Load flight data but don't display it yet.
 
-        // Handle flight selection
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Flight selectedFlight = flightList.get(position);
+        // Search button event
+        btnSearch.setOnClickListener(v -> searchFlights());
+    }
 
-                Intent intent = new Intent(SearchActivity.this, FlightDetailsActivity.class);
-                intent.putExtra("airline", selectedFlight.getAirline());
-                intent.putExtra("from", selectedFlight.getFrom());
-                intent.putExtra("to", selectedFlight.getTo());
-                intent.putExtra("departure", selectedFlight.getDepartureTime());
-                intent.putExtra("return", selectedFlight.getReturnTime());
-                intent.putExtra("price", selectedFlight.getPrice());
-                startActivity(intent);
+    private void loadFlightData() {
+        try {
+            InputStream is = getAssets().open("flights.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String json = new String(buffer, "UTF-8");
+
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject obj = jsonArray.getJSONObject(i);
+                allFlights.add(new Flight(
+                        obj.getString("airline"),
+                        obj.getString("from"),
+                        obj.getString("to"),
+                        obj.getString("departureTime"),
+                        obj.getString("returnTime"),
+                        obj.getString("price")
+                ));
             }
-        });
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void searchFlights() {
@@ -80,15 +95,33 @@ public class SearchActivity extends AppCompatActivity {
         String departure = etDeparture.getText().toString().trim();
         String returnDate = etReturn.getText().toString().trim();
 
-        // Clear old search results
-        flightList.clear();
+        if (from.isEmpty() || to.isEmpty() || departure.isEmpty()) {
+            Toast.makeText(this, "Please enter all required details", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Add some sample flight results
-        flightList.add(new Flight("Airline A", from, to, departure, returnDate, "$250"));
-        flightList.add(new Flight("Airline B", from, to, departure, returnDate, "$220"));
-        flightList.add(new Flight("Airline C", from, to, departure, returnDate, "$275"));
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("from", from);
+        editor.putString("to", to);
+        editor.putString("departure", departure);
+        editor.putString("return", returnDate);
+        editor.apply();
 
-        // Notify adapter of data changes
+        filteredFlights.clear();
+
+        for (Flight flight : allFlights) {
+            if (flight.getFrom().equalsIgnoreCase(from) &&
+                    flight.getTo().equalsIgnoreCase(to) &&
+                    flight.getDepartureTime().equalsIgnoreCase(departure) &&
+                    (returnDate.isEmpty() || flight.getReturnTime().equalsIgnoreCase(returnDate))) {
+                filteredFlights.add(flight);
+            }
+        }
+
+        if (filteredFlights.isEmpty()) {
+            Toast.makeText(this, "No flights found for the selected route and date", Toast.LENGTH_SHORT).show();
+        }
+
         flightAdapter.notifyDataSetChanged();
     }
 }

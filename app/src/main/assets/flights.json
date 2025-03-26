@@ -1,0 +1,26 @@
+[
+  {
+    "airline": "Airline A",
+    "from": "City A",
+    "to": "City B",
+    "departureTime": "11/11/11",
+    "returnTime": "22/22/22",
+    "price": "$250"
+  },
+  {
+    "airline": "Airline B",
+    "from": "City B",
+    "to": "City c",
+    "departureTime": "11/11/11",
+    "returnTime": "22/22/22",
+    "price": "$220"
+  },
+  {
+    "airline": "Airline C",
+    "from": "City A",
+    "to": "City c",
+    "departureTime": "11/11/11",
+    "returnTime": "22/22/22",
+    "price": "$275"
+  }
+]
